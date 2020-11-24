@@ -34,4 +34,12 @@ RSpec.describe Processor::Coordinate do
       end
     end
   end
+
+  describe '#distance_to' do
+    let(:origin) { Processor::Coordinate.new(53.339428, -6.257664) }
+    let(:customer2_location) { Processor::Coordinate.new(53.2451022, -6.238335)}
+
+    it { expect(customer2_location.distance_to(origin)).to eql(10.57) }
+    it { expect(origin.distance_to(customer2_location)).to eql(10.57) }
+  end
 end

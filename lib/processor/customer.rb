@@ -10,5 +10,9 @@ module Processor
       @name = name
       @location = location
     end
+
+    def distance_to(origin)
+      location.distance_to(origin)
+    end
   end
 end

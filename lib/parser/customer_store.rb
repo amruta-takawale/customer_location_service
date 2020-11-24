@@ -20,5 +20,11 @@ module Parser
     def initialize(customers)
       @customers = customers
     end
+
+    def nearby(origin, distance)
+      customers.select do |customer|
+        customer.distance_to(origin) <= distance
+      end.sort_by(&:id)
+    end
   end
 end
