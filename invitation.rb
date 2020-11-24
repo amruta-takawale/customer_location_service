@@ -10,8 +10,8 @@ def invite(input_file, origin_lat, origin_lng, distance)
   customer_store = fetch_customers(input_file)
   origin_coord = Processor::Coordinate.build(origin_lat.to_f, origin_lng.to_f)
   nearby_customers(customer_store, origin_coord, distance)
-  # rescue StandardError => e
-  #   p "#{e.class}- #{e.message}"
+  rescue StandardError => e
+    p "#{e.class}- #{e.message}"
 end
 
 def fetch_customers(input_file)
@@ -28,7 +28,7 @@ def nearby_customers(customer_store, origin_coord, distance)
 end
 
 def create_file(path)
-  Pathname(path).dirname.mkdir unless File.exist?(path)
+  Pathname(path).dirname.mkdir unless File.exist?(File.dirname(path))
   File.open(path, "w")
 end
 
